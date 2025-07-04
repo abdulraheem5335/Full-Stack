@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const blog = require('./routes/blog.js')
+const shop = require('./routes/shop.js')
 
 app.use(express.json());
 app.use(express.static("public"))
+app.use('/blog', blog);
+app.use('/shop', shop);
 
 app.use((req, res, next) => {
     console.log(`🟠 METHOD: ${req.method}, URL: ${req.url}`);
